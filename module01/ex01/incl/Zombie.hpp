@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:03:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/13 17:37:24 by nbonnet          ###   ########.fr       */
+/*   Created: 2025/05/01 12:05:14 by nbonnet           #+#    #+#             */
+/*   Updated: 2025/05/14 14:35:32 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+# include <string>
+# include <iostream>
 
-Zombie::Zombie() : _name("Stack") {
+class Zombie {
+	private:
+		std::string _name;
 
-}
+	public:
+		Zombie();
+		Zombie(std::string name);
+		~Zombie();
+		void announce(void);
+		void setName(std::string name);
+		static Zombie* newZombie(std::string name);
 
-Zombie::Zombie(std::string name) : _name(name) {
-	
-}
+};
 
-Zombie::~Zombie() {
-	std::cout << "\"" << _name << "\" destroyed" << std::endl;
-}
+Zombie*	zombieHorde(int N, std::string name);
 
-void Zombie::announce() {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#endif

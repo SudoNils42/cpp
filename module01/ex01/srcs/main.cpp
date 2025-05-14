@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:03:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/13 17:37:24 by nbonnet          ###   ########.fr       */
+/*   Created: 2025/05/01 12:03:11 by nbonnet           #+#    #+#             */
+/*   Updated: 2025/05/14 16:46:54 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/Zombie.hpp"
 
-Zombie::Zombie() : _name("Stack") {
+int	main() {
+	int	N = 8;
+	Zombie* horde = zombieHorde(N, "Horde");
+	if (horde == NULL) {
+		std::cout << "Error" << std::endl;
+		return 1;
+	}
+	for (int i = 0; i < N; i++){
+		horde[i].announce();
+	}
+	delete []horde;
 
-}
-
-Zombie::Zombie(std::string name) : _name(name) {
-	
-}
-
-Zombie::~Zombie() {
-	std::cout << "\"" << _name << "\" destroyed" << std::endl;
-}
-
-void Zombie::announce() {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	return 0;
 }
