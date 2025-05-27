@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:12:27 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/22 18:39:58 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:06:02 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,17 @@ void Replace::setNames(std::string av1, std::string av2, std::string av3) {
 
 void Replace::process() {
     std::ifstream inFile(_filename.c_str());
+    if (!inFile.is_open())
+    {
+        std::cout << "Error with: " << _filename << std::endl;
+        return ;
+    }
     std::ofstream outFile((_filename + ".replace").c_str());
+    if (!outFile.is_open())
+    {
+        std::cout << "Error with output file" << std::endl;
+        return ;
+    }
     std::string content = "";
     std::string line = "";
     while(std::getline(inFile, line))
