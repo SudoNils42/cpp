@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:03:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/13 17:37:24 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:25:47 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/Zombie.hpp"
-
-Zombie::Zombie() : _name("Stack") {
-
-}
 
 Zombie::Zombie(std::string name) : _name(name) {
 	

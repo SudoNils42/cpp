@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:06:52 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/15 16:54:55 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:33:06 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class HumanB {
 	public:
 		HumanB(std::string name);
 		~HumanB();
-		void attack() const;
+		void attack();
 		void setWeapon(Weapon &weapon);
 
 };

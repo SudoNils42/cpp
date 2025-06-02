@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:28:08 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/15 16:54:50 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:33:00 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ HumanB::~HumanB() {
 
 }
 
-void HumanB::attack() const {
+void HumanB::attack(){
 	if (_weapon != NULL)
 		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 	else

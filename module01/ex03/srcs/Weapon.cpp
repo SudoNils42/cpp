@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:37:29 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/15 16:24:08 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:33:53 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Weapon::~Weapon() {
 
 }
 
-const std::string& Weapon::getType() const {
+std::string& Weapon::getType(){
 	return _type;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:59:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/15 16:23:37 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:33:09 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class HumanA {
 	public:
 		HumanA(std::string name, Weapon &weapon);
 		~HumanA();
-		void attack() const;
+		void attack();
 
 };
 

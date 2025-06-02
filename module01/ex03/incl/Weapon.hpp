@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:28:49 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/05/15 16:23:43 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:33:48 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Weapon {
 	public:
 		Weapon(std::string type);
 		~Weapon();
-		const std::string& getType() const;
+		std::string& getType();
 		void setType(std::string typeValue);
 
 
