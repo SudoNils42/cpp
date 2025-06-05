@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:35:36 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/04 18:26:18 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/05 15:15:34 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Animal::~Animal() {
 }
 
 void Animal::makeSound(void) const {
-    std::cout << "[makeSound] function has to be called from an heritage class" << std::endl;
+    std::cout << "[makeSound] WEIRRRRD animal sound" << std::endl;
 }
 
 std::string Animal::getType(void) const {
