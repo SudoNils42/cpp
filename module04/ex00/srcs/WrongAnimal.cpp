@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:35:36 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/05 15:19:06 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/05 15:31:03 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ WrongAnimal::WrongAnimal(WrongAnimal& src) : _type(src._type) {
     std::cout << "[WrongAnimal] copy constructor called" << std::endl;
 }
 
-WrongAnimal& WrongAnimal::operator=(WrongAnimal& rhs) {
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& rhs) {
     std::cout << "[WrongAnimal] operator= called" << std::endl;
     if (this != &rhs)
         _type = rhs._type;

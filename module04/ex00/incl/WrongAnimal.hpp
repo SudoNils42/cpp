@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 15:13:41 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/05 15:16:12 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/05 15:30:37 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class WrongAnimal {
         WrongAnimal();
         WrongAnimal(std::string type);
         WrongAnimal(WrongAnimal& src);
-        WrongAnimal& operator=(WrongAnimal& rhs);
+        WrongAnimal& operator=(const WrongAnimal& rhs);
         ~WrongAnimal();
         void makeSound(void) const;
         std::string getType(void) const;

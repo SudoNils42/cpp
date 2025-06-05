@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:35:36 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/05 15:15:34 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/05 15:30:46 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Animal::Animal(Animal& src) : _type(src._type) {
     std::cout << "[Animal] copy constructor called" << std::endl;
 }
 
-Animal& Animal::operator=(Animal& rhs) {
+Animal& Animal::operator=(const Animal& rhs) {
     std::cout << "[Animal] operator= called" << std::endl;
     if (this != &rhs)
         _type = rhs._type;
