@@ -6,11 +6,11 @@
 #    By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 14:19:35 by nbonnet           #+#    #+#              #
-#    Updated: 2025/06/04 17:24:00 by nbonnet          ###   ########.fr        #
+#    Updated: 2025/06/10 16:04:53 by nbonnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = poly
+NAME = copy
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRCS = $(wildcard srcs/*.cpp)
