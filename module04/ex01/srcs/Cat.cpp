@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:47:31 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/05 16:55:38 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/10 14:38:28 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Cat::Cat() : Animal("Cat") {
 
 Cat::Cat(Cat& src) : Animal(src) {
     std::cout << "[Cat] copy constructor called" << std::endl;
+    _brain = new Brain(*src._brain);
 }
 
 Cat& Cat::operator=(Cat& rhs) {
@@ -45,6 +46,6 @@ std::string Cat::getType(void) const {
     return _type;
 }
 
-Brain* Cat::getBrain() const {
-    return _brain;
+Brain& Cat::getBrain() const {
+    return *_brain;
 }
