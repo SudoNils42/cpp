@@ -6,71 +6,88 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:26:59 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/26 14:47:57 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/26 16:32:56 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/Bureaucrat.hpp"
 
 int main() {
-    // Test 1 : Création d'un bureaucrate valide
-    try {
-        std::cout << "\n=== Test 1: Création d'un bureaucrate valide ===\n";
+    try
+    {
+        std::cout << "=== Test 1 ===" << std::endl;
         Bureaucrat employee("Employee", 50);
-        std::cout << "Bureaucrate créé : " << employee.getName() << ", grade " << employee.getGrade() << std::endl;
-    } catch (std::exception &e) {
-        std::cerr << "Erreur inattendue: " << e.what() << std::endl;
+        std::cout << "Bureaucrate créé : " << employee << std::endl;
     }
-
-    // Test 2 : Grade trop haut
-    try {
-        std::cout << "\n=== Test 2: Grade trop haut (-1) ===\n";
+    catch (std::exception &e) {
+        std::cout << "Erreur inattendue: " << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << "=== Test 2 ===" << std::endl;
         Bureaucrat boss("Boss", -1);
-    } catch (std::exception &e) {
-        std::cerr << "Erreur: " << e.what() << std::endl;
+        std::cout << boss << std::endl;
     }
-
-    // Test 3 : Grade trop bas
-    try {
-        std::cout << "\n=== Test 3: Grade trop bas (151) ===\n";
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << "=== Test 3 ===" << std::endl;
         Bureaucrat intern("Intern", 151);
-    } catch (std::exception &e) {
-        std::cerr << "Erreur: " << e.what() << std::endl;
+        std::cout << intern << std::endl;
     }
-
-    // Test 4 : Incrémentation et décrémentation
-    try {
-        std::cout << "\n=== Test 4: Incrémentation et décrémentation ===\n";
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << "=== Test 4 ===" << std::endl;
         Bureaucrat worker("Worker", 2);
-        std::cout << "Avant incrémentation : " << worker.getName() << ", grade " << worker.getGrade() << std::endl;
-        ++worker;
-        std::cout << "Après incrémentation : " << worker.getName() << ", grade " << worker.getGrade() << std::endl;
-        ++worker; // Devrait lancer une exception (grade 1 -> 0)
-    } catch (std::exception &e) {
-        std::cerr << "Erreur: " << e.what() << std::endl;
+        std::cout << "Avant incrémentation : " << worker << std::endl;
+        worker.incrementGrade();
+        std::cout << "Après 1ère incrémentation : " << worker << std::endl;
+        worker.incrementGrade();
+        std::cout << "Après 2ème incrémentation : " << worker << std::endl;
     }
-
-    // Test 5 : Opérateur de copie
-    try {
-        std::cout << "\n=== Test 5: Copie d'un bureaucrate ===\n";
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << "=== Test 5 ===" << std::endl;
+        Bureaucrat worker("Worker", 149);
+        std::cout << "Avant décrémentation : " << worker << std::endl;
+        worker.decrementGrade();
+        std::cout << "Après 1ère décrémentation : " << worker << std::endl;
+        worker.decrementGrade();
+        std::cout << "Après 2ème décrémentation : " << worker << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << "=== Test 6 ===" << std::endl;
         Bureaucrat original("Original", 100);
         Bureaucrat copy(original);
-        std::cout << "Original : " << original.getName() << ", grade " << original.getGrade() << std::endl;
-        std::cout << "Copie : " << copy.getName() << ", grade " << copy.getGrade() << std::endl;
-    } catch (std::exception &e) {
-        std::cerr << "Erreur: " << e.what() << std::endl;
+        std::cout << "Original : " << original << std::endl;
+        std::cout << "Copie : " << copy << std::endl;
     }
-
-    // Test 6 : Opérateur d'assignation
-    try {
-        std::cout << "\n=== Test 6: Assignation d'un bureaucrate ===\n";
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << "=== Test 7 ===" << std::endl;
         Bureaucrat worker1("Worker1", 75);
         Bureaucrat worker2("Worker2", 25);
-        std::cout << "Avant assignation : Worker1 grade " << worker1.getGrade() << ", Worker2 grade " << worker2.getGrade() << std::endl;
+        std::cout << "Avant assignation : Worker1 " << worker1 << ", Worker2 " << worker2 << std::endl;
         worker2 = worker1;
-        std::cout << "Après assignation : Worker1 grade " << worker1.getGrade() << ", Worker2 grade " << worker2.getGrade() << std::endl;
-    } catch (std::exception &e) {
-        std::cerr << "Erreur: " << e.what() << std::endl;
+        std::cout << "Après assignation : Worker1 " << worker1 << ", Worker2 " << worker2 << std::endl;
+    }
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
     }
 
     return 0;
