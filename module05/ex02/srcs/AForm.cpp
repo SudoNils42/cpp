@@ -6,66 +6,66 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 18:49:53 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:18:58 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:28:36 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/AForm.hpp"
 
-Form::Form(std::string name, const int gradeMinForSign, const int gradeMinForExec) : _name(name), _signe(false), _gradeMinForSign(gradeMinForSign), _gradeMinForExec(gradeMinForExec) {
-    std::cout << "[Form] default constructor called" << std::endl;
+AForm::AForm(std::string name, const int gradeMinForSign, const int gradeMinForExec) : _name(name), _signe(false), _gradeMinForSign(gradeMinForSign), _gradeMinForExec(gradeMinForExec) {
+    std::cout << "[AForm] default constructor called" << std::endl;
     if (gradeMinForSign < 1 || gradeMinForExec < 1)
         throw GradeTooHighException();
     else if (gradeMinForSign > 150 || gradeMinForExec > 150)
         throw GradeTooLowException();
 }
 
-Form::Form(Form& src) : _name(src._name), _signe(src._signe), _gradeMinForSign(src._gradeMinForSign), _gradeMinForExec(src._gradeMinForExec) {
-    std::cout << "[Form] copy constructor called" << std::endl;
+AForm::AForm(AForm& src) : _name(src._name), _signe(src._signe), _gradeMinForSign(src._gradeMinForSign), _gradeMinForExec(src._gradeMinForExec) {
+    std::cout << "[AForm] copy constructor called" << std::endl;
 }
 
-Form& Form::operator=(const Form& rhs) {
-    std::cout << "[Form] operator= called" << std::endl;
+AForm& AForm::operator=(const AForm& rhs) {
+    std::cout << "[AForm] operator= called" << std::endl;
     if (this != &rhs)
         _signe= rhs._signe;   
     return *this;
 }
 
-Form::~Form() {
-    std::cout << "[Form] default destructor called" << std::endl;
+AForm::~AForm() {
+    std::cout << "[AForm] default destructor called" << std::endl;
 }
 
-const std::string Form::getName() const {
+const std::string AForm::getName() const {
     return _name;
 }
 
-bool Form::getSigne() const {
+bool AForm::getSigne() const {
     return _signe;
 }
-int Form::getGradeMinForSign() const {
+int AForm::getGradeMinForSign() const {
     return _gradeMinForSign;
 }
 
-int Form::getGradeMinForExec() const {
+int AForm::getGradeMinForExec() const {
     return _gradeMinForExec;
 }
 
-void Form::beSigned(Bureaucrat& src) {
+void AForm::beSigned(Bureaucrat& src) {
     if (src.getGrade() <= _gradeMinForSign)
         _signe = true;
     else
         throw GradeTooHighException();
 }
 
-const char* Form::GradeTooHighException::what() const throw() {
-    return "Grade of form too High!";
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "Grade of Aform too High!";
 }
 
-const char* Form::GradeTooLowException::what() const throw() {
-    return "Grade of form too Low!";
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "Grade of Aform too Low!";
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& form) {
-    os << form.getName() << ", signed status: " << form.getSigne();
+std::ostream& operator<<(std::ostream& os, const AForm& Aform) {
+    os << Aform.getName() << ", signed status: " << Aform.getSigne();
     return os;
 }

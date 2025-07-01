@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:58:34 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/27 16:22:10 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:28:49 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void Bureaucrat::decrementGrade() {
     _grade++;
 }
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(AForm& form) {
     try {
         form.beSigned(*this);
         std::cout << _name << " signed " << form.getName() << std::endl;

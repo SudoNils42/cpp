@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #pragma once
 #include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
   private:
     const std::string _name;
     bool _signe;
@@ -21,10 +21,10 @@ class Form {
     const int _gradeMinForExec;
 
   public:
-    Form(std::string name, const int gradeMinForSign, const int gradeMinForExec);
-    Form(Form& src);
-    Form& operator=(const Form& rhs);
-    ~Form();
+    AForm(std::string name, const int gradeMinForSign, const int gradeMinForExec);
+    AForm(AForm& src);
+    AForm& operator=(const AForm& rhs);
+    ~AForm();
     
     const std::string getName() const;
     bool getSigne() const;
@@ -43,4 +43,4 @@ class Form {
     };
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& Aform);
