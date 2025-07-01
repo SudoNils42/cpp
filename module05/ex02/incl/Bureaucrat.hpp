@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:59:11 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:26:58 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:07:57 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <fstream>
 
 class AForm;
 

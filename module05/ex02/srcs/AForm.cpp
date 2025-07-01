@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 18:49:53 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:28:36 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:18:38 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ AForm::AForm(std::string name, const int gradeMinForSign, const int gradeMinForE
         throw GradeTooLowException();
 }
 
-AForm::AForm(AForm& src) : _name(src._name), _signe(src._signe), _gradeMinForSign(src._gradeMinForSign), _gradeMinForExec(src._gradeMinForExec) {
+AForm::AForm(const AForm& src) : _name(src._name), _signe(src._signe), _gradeMinForSign(src._gradeMinForSign), _gradeMinForExec(src._gradeMinForExec) {
     std::cout << "[AForm] copy constructor called" << std::endl;
 }
 

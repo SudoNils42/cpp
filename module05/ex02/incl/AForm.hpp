@@ -22,7 +22,7 @@ class AForm {
 
   public:
     AForm(std::string name, const int gradeMinForSign, const int gradeMinForExec);
-    AForm(AForm& src);
+    AForm(const AForm& src);
     AForm& operator=(const AForm& rhs);
     ~AForm();
     
@@ -33,6 +33,8 @@ class AForm {
     
     void beSigned(Bureaucrat& bureaucrat);
     
+    virtual void executeAction() const = 0;
+
     class GradeTooHighException : public std::exception {
         public:
             const char* what() const throw();

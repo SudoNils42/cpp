@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:19:11 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/27 16:22:15 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:33:37 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int main() {
     try {
         std::cout << "=== Test 1 ===" << std::endl;
         Bureaucrat boss("Boss", 50);
-        Form form("Contract", 10, 50);
+        AForm form("Contract", 10, 50);
         std::cout << boss << std::endl;
         std::cout << form << std::endl;
-        boss.signForm(form);
-        std::cout << form << std::endl;
+        boss.signForm(Aform);
+        std::cout << Aform << std::endl;
         boss.incrementGrade();
         std::cout << boss << std::endl;
         
@@ -33,10 +33,10 @@ int main() {
     catch (Bureaucrat::GradeTooLowException &e) {
         std::cerr << e.what() << std::endl;
     }
-    catch (Form::GradeTooHighException &e) {
+    catch (AForm::GradeTooHighException &e) {
         std::cerr << e.what() << std::endl;
     }
-    catch (Form::GradeTooLowException &e) {
+    catch (AForm::GradeTooLowException &e) {
         std::cerr << e.what() << std::endl;
     }
     catch (std::exception &e) {
