@@ -6,11 +6,12 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:58:34 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/26 19:43:33 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:22:10 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/Bureaucrat.hpp"
+#include "../incl/AForm.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
     std::cout << "[Bureaucrat] default constructor called" << std::endl;
@@ -56,6 +57,15 @@ void Bureaucrat::decrementGrade() {
     _grade++;
 }
 
+void Bureaucrat::signForm(Form& form) {
+    try {
+        form.beSigned(*this);
+        std::cout << _name << " signed " << form.getName() << std::endl;
+    } catch (std::exception& e) {
+        std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
     return "Grade is too high!";
 }
@@ -65,6 +75,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
-    os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+    os << bureaucrat.getName() << ", bureaucrat grade: " << bureaucrat.getGrade();
     return os;
 }

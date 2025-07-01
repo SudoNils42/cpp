@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:26:59 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/26 16:32:56 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:19:32 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int main() {
     {
         std::cout << "=== Test 1 ===" << std::endl;
         Bureaucrat employee("Employee", 50);
-        std::cout << "Bureaucrate créé : " << employee << std::endl;
+        std::cout << employee << std::endl;
     }
     catch (std::exception &e) {
-        std::cout << "Erreur inattendue: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     try
     {
@@ -44,11 +44,11 @@ int main() {
     {
         std::cout << "=== Test 4 ===" << std::endl;
         Bureaucrat worker("Worker", 2);
-        std::cout << "Avant incrémentation : " << worker << std::endl;
+        std::cout << worker << std::endl;
         worker.incrementGrade();
-        std::cout << "Après 1ère incrémentation : " << worker << std::endl;
+        std::cout << worker << std::endl;
         worker.incrementGrade();
-        std::cout << "Après 2ème incrémentation : " << worker << std::endl;
+        std::cout << worker << std::endl;
     }
     catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -57,11 +57,11 @@ int main() {
     {
         std::cout << "=== Test 5 ===" << std::endl;
         Bureaucrat worker("Worker", 149);
-        std::cout << "Avant décrémentation : " << worker << std::endl;
+        std::cout << worker << std::endl;
         worker.decrementGrade();
-        std::cout << "Après 1ère décrémentation : " << worker << std::endl;
+        std::cout << worker << std::endl;
         worker.decrementGrade();
-        std::cout << "Après 2ème décrémentation : " << worker << std::endl;
+        std::cout << worker << std::endl;
     }
     catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -82,9 +82,9 @@ int main() {
         std::cout << "=== Test 7 ===" << std::endl;
         Bureaucrat worker1("Worker1", 75);
         Bureaucrat worker2("Worker2", 25);
-        std::cout << "Avant assignation : Worker1 " << worker1 << ", Worker2 " << worker2 << std::endl;
+        std::cout << worker1 << ", " << worker2 << std::endl;
         worker2 = worker1;
-        std::cout << "Après assignation : Worker1 " << worker1 << ", Worker2 " << worker2 << std::endl;
+        std::cout << worker1 << ", " << worker2 << std::endl;
     }
     catch (std::exception &e) {
         std::cout << e.what() << std::endl;
