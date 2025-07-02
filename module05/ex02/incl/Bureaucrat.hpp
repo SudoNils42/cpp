@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:59:11 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/02 14:12:37 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/02 14:25:38 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ class Bureaucrat {
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
+        
         void signForm(AForm& form);
+        void executeForm(const AForm& form) const;
 
         class GradeTooHighException :  public std::exception {
            public:

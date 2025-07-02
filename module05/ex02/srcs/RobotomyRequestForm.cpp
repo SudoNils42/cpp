@@ -6,11 +6,12 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:27:18 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 18:27:27 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/02 15:30:06 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
     : AForm("RobotomyRequestForm", 72, 45), _target(target) {

@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:21:36 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 18:05:11 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/02 14:33:31 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ class PresidentialPardonForm : public AForm {
         PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
         ~PresidentialPardonForm();
 
-        void exectueAction() const;
+        void executeAction() const;
 };
