@@ -6,67 +6,67 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 18:49:53 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:18:58 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:18:38 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/AForm.hpp"
 
-Form::Form(std::string name, const int gradeMinForSign, const int gradeMinForExec) : _name(name), _signe(false), _gradeMinForSign(gradeMinForSign), _gradeMinForExec(gradeMinForExec) {
-    std::cout << "[Form] default constructor called" << std::endl;
+AForm::AForm(std::string name, const int gradeMinForSign, const int gradeMinForExec) : _name(name), _signe(false), _gradeMinForSign(gradeMinForSign), _gradeMinForExec(gradeMinForExec) {
+    std::cout << "[AForm] default constructor called" << std::endl;
     if (gradeMinForSign < 1 || gradeMinForExec < 1)
         throw GradeTooHighException();
     else if (gradeMinForSign > 150 || gradeMinForExec > 150)
         throw GradeTooLowException();
 }
 
-Form::Form(Form& src) : _name(src._name), _signe(src._signe), _gradeMinForSign(src._gradeMinForSign), _gradeMinForExec(src._gradeMinForExec) {
-    std::cout << "[Form] copy constructor called" << std::endl;
+AForm::AForm(const AForm& src) : _name(src._name), _signe(src._signe), _gradeMinForSign(src._gradeMinForSign), _gradeMinForExec(src._gradeMinForExec) {
+    std::cout << "[AForm] copy constructor called" << std::endl;
 }
 
-Form& Form::operator=(const Form& rhs) {
-    std::cout << "[Form] operator= called" << std::endl;
+AForm& AForm::operator=(const AForm& rhs) {
+    std::cout << "[AForm] operator= called" << std::endl;
     if (this != &rhs)
         _signe= rhs._signe;   
     return *this;
 }
 
-Form::~Form() {
-    std::cout << "[Form] default destructor called" << std::endl;
+AForm::~AForm() {
+    std::cout << "[AForm] default destructor called" << std::endl;
 }
 
-const std::string Form::getName() const {
+const std::string AForm::getName() const {
     return _name;
 }
 
-bool Form::getSigne() const {
+bool AForm::getSigne() const {
     return _signe;
 }
-int Form::getGradeMinForSign() const {
+int AForm::getGradeMinForSign() const {
     return _gradeMinForSign;
 }
 
-int Form::getGradeMinForExec() const {
+int AForm::getGradeMinForExec() const {
     return _gradeMinForExec;
 }
 
-void Form::beSigned(Bureaucrat& src) {
+void AForm::beSigned(Bureaucrat& src) {
     if (src.getGrade() <= _gradeMinForSign)
         _signe = true;
     else
         throw GradeTooHighException();
 }
 
-const char* Form::GradeTooHighException::what() const throw() {
-    return "Grade of form too High!";
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "Grade of Aform too High!";
 }
 
-const char* Form::GradeTooLowException::what() const throw() {
-    return "Grade of form too Low!";
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "Grade of Aform too Low!";
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& form) {
-    os << form.getName() << ", signed status: " << form.getSigne();
+std::ostream& operator<<(std::ostream& os, const AForm& Aform) {
+    os << Aform.getName() << ", signed status: " << Aform.getSigne();
     return os;
 }/* ************************************************************************** */
 /*                                                                            */
@@ -76,7 +76,7 @@ std::ostream& operator<<(std::ostream& os, const Form& form) {
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:58:34 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/27 16:22:10 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:28:49 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void Bureaucrat::decrementGrade() {
     _grade++;
 }
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(AForm& form) {
     try {
         form.beSigned(*this);
         std::cout << _name << " signed " << form.getName() << std::endl;
@@ -155,7 +155,7 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:19:11 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/27 16:22:15 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:33:37 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,11 +167,11 @@ int main() {
     try {
         std::cout << "=== Test 1 ===" << std::endl;
         Bureaucrat boss("Boss", 50);
-        Form form("Contract", 10, 50);
+        AForm form("Contract", 10, 50);
         std::cout << boss << std::endl;
         std::cout << form << std::endl;
-        boss.signForm(form);
-        std::cout << form << std::endl;
+        boss.signForm(Aform);
+        std::cout << Aform << std::endl;
         boss.incrementGrade();
         std::cout << boss << std::endl;
         
@@ -182,10 +182,10 @@ int main() {
     catch (Bureaucrat::GradeTooLowException &e) {
         std::cerr << e.what() << std::endl;
     }
-    catch (Form::GradeTooHighException &e) {
+    catch (AForm::GradeTooHighException &e) {
         std::cerr << e.what() << std::endl;
     }
-    catch (Form::GradeTooLowException &e) {
+    catch (AForm::GradeTooLowException &e) {
         std::cerr << e.what() << std::endl;
     }
     catch (std::exception &e) {
@@ -194,7 +194,108 @@ int main() {
 }/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/01 18:27:18 by nbonnet           #+#    #+#             */
+/*   Updated: 2025/07/01 18:27:27 by nbonnet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../incl/RobotomyRequestForm.hpp"
+
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+    : AForm("RobotomyRequestForm", 72, 45), _target(target) {
+    std::cout << "[RobotomyRequestForm] default constructor called" << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src)
+    : AForm(src), _target(src._target) {
+    std::cout << "[RobotomyRequestForm] copy constructor called" << std::endl;
+}
+
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs) {
+    std::cout << "[RobotomyRequestForm] operator= called" << std::endl;
+    if (this != &rhs) {
+        AForm::operator=(rhs);
+        _target = rhs._target;
+    }
+    return *this;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm() {
+    std::cout << "[RobotomyRequestForm] default destructor called" << std::endl;
+}
+
+void RobotomyRequestForm::executeAction() const {
+    std::cout << "Bzzz! Drilling noises..." << std::endl;
+    if (std::rand() % 2 == 0) {
+        std::cout << _target << " has been robotomized successfully!" << std::endl;
+    } else {
+        std::cout << "Robotomy of " << _target << " failed!" << std::endl;
+    }
+}/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/01 18:07:45 by nbonnet           #+#    #+#             */
+/*   Updated: 2025/07/01 18:23:14 by nbonnet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../incl/ShrubberyCreationForm.hpp"
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+    : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
+    std::cout << "[ShrubberyCreationForm] default constructor called" << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
+    : AForm(src), _target(src._target) {
+    std::cout << "[ShrubberyCreationForm] copy constructor called" << std::endl;
+}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& rhs) {
+    std::cout << "[ShrubberyCreationForm] operator= called" << std::endl;
+    if (this != &rhs) {
+        AForm::operator=(rhs);
+        _target = rhs._target;
+    }
+    return *this;
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm() {
+    std::cout << "[ShrubberyCreationForm] default destructor called" << std::endl;
+}
+
+void ShrubberyCreationForm::executeAction() const { 
+    std::ofstream file((_target + "_shrubbery").c_str());
+    if (!file.is_open()) {
+        std::cerr << "Error: could not create file " << _target + "_shrubbery" << std::endl;
+        return;
+    }
+    file << "       /\\\n"
+         << "      /  \\\n"
+         << "     /    \\\n"
+         << "    /______\\\n"
+         << "      ||||\n"
+         << "      ||||\n"
+         << "\n"
+         << "       /\\\n"
+         << "      /  \\\n"
+         << "     /____\\\n"
+         << "      ||||\n"
+         << "      ||||\n";
+    file.close();
+    std::cout << "Shrubbery created in file: " << _target + "_shrubbery" << std::endl;
+}/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -206,7 +307,7 @@ int main() {
 #pragma once
 #include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
   private:
     const std::string _name;
     bool _signe;
@@ -214,10 +315,10 @@ class Form {
     const int _gradeMinForExec;
 
   public:
-    Form(std::string name, const int gradeMinForSign, const int gradeMinForExec);
-    Form(Form& src);
-    Form& operator=(const Form& rhs);
-    ~Form();
+    AForm(std::string name, const int gradeMinForSign, const int gradeMinForExec);
+    AForm(const AForm& src);
+    AForm& operator=(const AForm& rhs);
+    ~AForm();
     
     const std::string getName() const;
     bool getSigne() const;
@@ -226,6 +327,8 @@ class Form {
     
     void beSigned(Bureaucrat& bureaucrat);
     
+    virtual void executeAction() const = 0;
+
     class GradeTooHighException : public std::exception {
         public:
             const char* what() const throw();
@@ -236,7 +339,7 @@ class Form {
     };
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);/* ************************************************************************** */
+std::ostream& operator<<(std::ostream& os, const AForm& Aform);/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
@@ -244,7 +347,7 @@ std::ostream& operator<<(std::ostream& os, const Form& form);/* ****************
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 13:59:11 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/06/26 19:44:03 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:07:57 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,8 +355,9 @@ std::ostream& operator<<(std::ostream& os, const Form& form);/* ****************
 #include <iostream>
 #include <string>
 #include <exception>
+#include <fstream>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -268,7 +372,7 @@ class Bureaucrat {
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
-        void signForm(Form& form);
+        void signForm(AForm& form);
         class GradeTooHighException :  public std::exception {
            public:
                const char* what() const throw();
@@ -288,22 +392,24 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:21:36 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:22:11 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:05:11 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
 
-class PresidentialPardonForm {
+class PresidentialPardonForm : public AForm {
     private:
-        
+        std::string _target;
 
     public:
-        PresidentialPardonForm(std::string name, int grade);
+        PresidentialPardonForm(std::string target);
         PresidentialPardonForm (const PresidentialPardonForm& src);
         PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
         ~PresidentialPardonForm();
+
+        void exectueAction() const;
 };/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -312,22 +418,24 @@ class PresidentialPardonForm {
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:22:19 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:22:44 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:05:40 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
 
-class RobotomyRequestForm {
+class RobotomyRequestForm : public AForm {
     private:
-        
+        std::string _target;
 
     public:
-        RobotomyRequestForm(std::string name, int grade);
+        RobotomyRequestForm(std::string target);
         RobotomyRequestForm (const RobotomyRequestForm& src);
         RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
         ~RobotomyRequestForm();
+
+        void executeAction() const;
 };/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -336,20 +444,22 @@ class RobotomyRequestForm {
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:47:48 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:21:23 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/01 18:04:07 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
 
-class ShrubberyCreationForm {
+class ShrubberyCreationForm : public AForm {
     private:
-        
+        std::string _target;
 
     public:
-        ShrubberyCreationForm(std::string name, int grade);
+        ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm (const ShrubberyCreationForm& src);
         ShrubberyCreationForm& operator=(const ShrubberyCreationForm& rhs);
         ~ShrubberyCreationForm();
+
+        void executeAction() const;
 };
