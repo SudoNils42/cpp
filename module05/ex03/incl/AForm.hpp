@@ -24,7 +24,7 @@ class AForm {
     AForm(std::string name, const int gradeMinForSign, const int gradeMinForExec);
     AForm(const AForm& src);
     AForm& operator=(const AForm& rhs);
-    ~AForm();
+    virtual ~AForm();
     
     const std::string getName() const;
     bool getSigne() const;
