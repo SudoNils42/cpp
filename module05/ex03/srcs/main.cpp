@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:19:11 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/07 15:11:26 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/07 15:17:48 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int main() {
         delete form;
         std::cout << std::endl;
         
-        form = intern.makeForm("robotomy request", "Bender");
+        form = intern.makeForm("robotomy request", "dig holes");
         std::cout << *form << std::endl;
         alice.signForm(*form);
         alice.executeForm(*form);
         delete form;
         std::cout << std::endl;
         
-        form = intern.makeForm("presidential pardon", "Zaphod");
+        form = intern.makeForm("presidential pardon", "Trump");
         std::cout << *form << std::endl;
         boss.signForm(*form);
         boss.executeForm(*form);
