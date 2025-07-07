@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:19:11 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/02 15:35:30 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/07 13:53:55 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main() {
         std::cout << alice << std::endl;
         std::cout << robot << std::endl;
         alice.signForm(robot); // doit avoir min 72
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
         alice.executeForm(robot); //doit avoir min 45 (et 1 chance sur 2)
         }
         
