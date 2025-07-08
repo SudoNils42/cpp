@@ -6,11 +6,11 @@
 #    By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 14:19:35 by nbonnet           #+#    #+#              #
-#    Updated: 2025/07/08 14:34:52 by nbonnet          ###   ########.fr        #
+#    Updated: 2025/07/08 16:00:25 by nbonnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = scalar
+NAME = convert
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRCS = $(wildcard srcs/*.cpp)
