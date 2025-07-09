@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:53:02 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/08 16:00:32 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/09 13:15:35 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ int main(int ac, char** av) {
     if (ac != 2)
     {
         std::cout << "please provide 1 argument" << std::endl;
-        return 0;
+        return 1;
     }
-    ScalarConverter test(av[1]);
-    std::cout << "char: " << test.toChar() << std::endl;
+    ScalarConverter::convert(av[1]);
     return 0;
 }
