@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:33:49 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/09 14:11:45 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/09 14:44:10 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ void ScalarConverter::convert(std::string input) {
     }
     else
         std::cout << "char: impossible" << std::endl;
+
+    if (input == "nan" || input == "nanf" || input == "+inf" || input == "-inf" || input == "+inff" || input == "-inff" || input == "inff")
+    {
+        std::cout << "int: impossible" << std::endl;
+        return;
+    }
+    value = std::atof(input.c_str());
+    if (value == 0 && input != "0")
+        std::cout << "int: impossible" << std::endl;
+    else if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max())
+    {
+        std::cout << "int: " << value << std::endl;    
+    }
+    else
+        std::cout << "int: impossible" << std::endl;
 }
