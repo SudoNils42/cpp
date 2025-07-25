@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:33:35 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/24 14:29:53 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/25 17:41:50 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <cstdlib>
 #include <limits>
 #include <iomanip>
+#include <cerrno>
 
 class ScalarConverter {
     private:
