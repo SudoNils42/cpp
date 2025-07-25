@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:33:49 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/25 15:13:23 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/25 15:37:54 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ bool isFloat(std::string input) {
         if (input[i] == '.') {
             if (hasDecimal)
                 return (false);
-            hasDecimal == true;
+            hasDecimal = true;
         }
         else if (!std::isdigit(input[i]))
             return (false);
@@ -143,8 +143,75 @@ bool isFloat(std::string input) {
 }
 
 void toFloat(std::string input) {
-    int len = input.length() - 1;
-    long value = 
+    std::string str = input.substr(0, input.length() - 1);
+    long value = std::atol(str.c_str());
+    if (value < -std::numeric_limits<float>::max() || value > std::numeric_limits<float>::max()) {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
+        return;
+    }
+    if (value >= std::numeric_limits<char>::min() && value <= std::numeric_limits<char>::max() && value == static_cast<int>(value)) {
+        char c = static_cast<char>(value);
+        if (std::isprint(c))
+            std::cout << "char: '" << c << "'" << std::endl;
+        else
+            std::cout << "char: Non displayable" << std::endl;
+    }
+    else
+        std::cout << "char: impossible" << std::endl;
+    if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max() && value == static_cast<long>(value))
+        std::cout << "int: " << static_cast<int>(value) << std::endl;
+    else
+        std::cout << "int: impossible" << std::endl;
+    std::cout << std::fixed << std::setprecision(1);
+    std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(value) << std::endl;
+}
+
+bool isDouble(std::string input) {
+    int len = input.length();
+    bool hasDecimal = false;
+    int i = 0;
+    if (input[0] == '+' || input[0] == '-')
+        i = 1;
+    for (; i < len; i++) {
+        if (input[i] == '.') {
+            if (hasDecimal)
+                return (false);
+            hasDecimal = true;
+        }
+        else if (!std::isdigit(input[i]))
+            return (false);
+    }
+    if (hasDecimal == false)
+        return (false);
+    return (true);
+}
+
+void toDouble(std::string input) {
+    double value = std::atof(input.c_str());
+    if (value >= std::numeric_limits<char>::min() && value <= std::numeric_limits<char>::max() && value == static_cast<int>(value)) {
+        char c = static_cast<char>(value);
+        if (std::isprint(c))
+            std::cout << "char: '" << c << "'" << std::endl;
+        else
+            std::cout << "char: Non displayable" << std::endl;
+    }
+    else
+        std::cout << "char: impossible" << std::endl;
+    if (value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max() && value == static_cast<long>(value))
+        std::cout << "int: " << static_cast<int>(value) << std::endl;
+    else
+        std::cout << "int: impossible" << std::endl;
+    if (value >= -std::numeric_limits<float>::max() && value <= std::numeric_limits<float>::max()) {
+        std::cout << std::fixed << std::setprecision(1);
+        std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+    }
+    else
+        std::cout << "float: impossible" << std::endl;
+    std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
 void ScalarConverter::convert(std::string input) {
@@ -156,7 +223,7 @@ void ScalarConverter::convert(std::string input) {
         toInt(input);
     else if (isFloat(input))
         toFloat(input);
-    // else (isDouble(input))
-    //     toDouble(input);
+    else if (isDouble(input))
+        toDouble(input);
     return ;
 }
