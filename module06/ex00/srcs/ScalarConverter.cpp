@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:33:49 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/07/25 15:37:54 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/07/25 15:50:46 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ void toInt(std::string input) {
 }
 
 bool isFloat(std::string input) {
+    if (input == "-f" || input == "+f")
+        return false;
     int len = input.length() - 1;
     if (input[len] != 'f')
         return (false);
@@ -144,7 +146,7 @@ bool isFloat(std::string input) {
 
 void toFloat(std::string input) {
     std::string str = input.substr(0, input.length() - 1);
-    long value = std::atol(str.c_str());
+    double value = std::atof(str.c_str());
     if (value < -std::numeric_limits<float>::max() || value > std::numeric_limits<float>::max()) {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
@@ -225,5 +227,11 @@ void ScalarConverter::convert(std::string input) {
         toFloat(input);
     else if (isDouble(input))
         toDouble(input);
+    else {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
+    }
     return ;
 }
