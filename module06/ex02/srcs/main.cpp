@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 19:08:03 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/08/15 19:57:37 by nbonnet          ###   ########.fr       */
+/*   Created: 2025/08/15 19:34:37 by nbonnet           #+#    #+#             */
+/*   Updated: 2025/08/15 19:55:07 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
-#include <cstdlib>
-#include <typeinfo>
+#include "../incl/Base.hpp"
 
-class Base {
-    public:
-        virtual ~Base();  
-};
-
-class A : public Base {};
-class B : public Base {};
-class C : public Base {};
-
-Base* generate(void);
-void identify(Base* p);
-void identify(Base& p);
+int main() {
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << "Test " << i << std::endl;
+        Base* ptr = generate();
+        if (ptr != NULL)
+        {
+            identify(ptr);
+            identify(*ptr);
+            delete ptr;
+        }
+        else
+            std::cout << "Error, NULL pointer" << std::endl;
+    }
+}

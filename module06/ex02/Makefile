@@ -6,11 +6,11 @@
 #    By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/15 16:11:14 by nbonnet           #+#    #+#              #
-#    Updated: 2025/08/15 16:11:19 by nbonnet          ###   ########.fr        #
+#    Updated: 2025/08/15 19:10:08 by nbonnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = serializer
+NAME = dynamic
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRCS = $(wildcard srcs/*.cpp)
