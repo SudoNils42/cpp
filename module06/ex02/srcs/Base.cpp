@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:09:59 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/08/15 19:54:45 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/08/16 16:36:25 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ void identify(Base& p) {
         dynamic_cast<A&>(p);
         std::cout << "Base& p = A" << std::endl;
         return ;
-    } catch (std::bad_cast&) {}
+    } catch (std::exception &e) {}
     
     try {
         dynamic_cast<B&>(p);
         std::cout << "Base& p = B" << std::endl;
         return ;
-    } catch (std::bad_cast&) {}
+    } catch (std::exception &e) {}
     
     try {
         dynamic_cast<C&>(p);
         std::cout << "Base& p = C" << std::endl;
         return ;
-    } catch (std::bad_cast&) {}
+    } catch (std::exception &e) {}
 }
