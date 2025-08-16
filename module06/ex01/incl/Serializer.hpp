@@ -6,17 +6,18 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 14:56:42 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/08/14 18:44:52 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/08/16 16:18:30 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
 #include <string>
 #include <stdint.h>
 
-
-
-struct Data {};
+struct Data {
+    int i;
+};
 
 class Serializer {
     private:
