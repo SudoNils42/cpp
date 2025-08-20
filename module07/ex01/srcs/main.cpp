@@ -6,11 +6,16 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:15:43 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/08/20 18:17:47 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/08/20 18:22:38 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/Iter.hpp"
+
+template <class T>
+void printElement(T& elem) {
+    std::cout << elem << std::endl;
+}
 
 template <class T>
 void printElement(const T& elem) {
