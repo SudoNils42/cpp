@@ -6,11 +6,11 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:15:43 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/08/20 17:06:56 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/08/20 17:55:59 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/whatever.hpp"
+#include "../incl/Whatever.hpp"
 
 int main( void ) {
     int a = 2;
