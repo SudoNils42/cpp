@@ -6,30 +6,30 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:15:43 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/08/20 18:22:38 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/08/22 14:57:21 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/Iter.hpp"
+#include "../incl/Array.hpp"
 
-template <class T>
-void printElement(T& elem) {
-    std::cout << elem << std::endl;
-}
-
-template <class T>
-void printElement(const T& elem) {
-    std::cout << elem << std::endl;
-}
 
 int main() {
-    int arr[] = {1, 2, 3, 4, 5};
-    size_t len = 5;
-
-    iter(arr, len, printElement<int>);
+    Array<int> IntTabEmpty();
+    Array<int> IntTab(3);
+    IntTab[0] = 1;
+    IntTab[1] = 2;
+    IntTab[2] = 3;
     
-    const char carr[] = {'a', 'b', 'c'};
-    iter(carr, 3, printElement<char>);
-
-    return 0;
+    Array<char> CharTabEmpty();
+    Array<char> CharTab(3);
+    CharTab[0] = 'a';
+    CharTab[1] = 'b';
+    CharTab[2] = 'c';
+    
+    Array<std::string> StringTab(2);
+    StringTab[0] = "Hello";
+    StringTab[1] = "wolrd!";
+    
+    
+    
 }
