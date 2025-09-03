@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:55:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/03 15:44:35 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/03 17:48:23 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 
 template <typename T>
 void easyfind(T& haystack, int needle) {
-    
-
-    while (haystack[i])
+    std::vector<int>::iterator i;
+    i = haystack.begin();
+    while (i < haystack.end())
     {
-        if (haystack[i] == needle)
+        if (*i == needle)
         {
-            std::cout << "needle '" << needle << "' found at occurence '" << i << "'" << std::endl;
+            std::cout << "needle '" << needle << "' found at occurence '" << *i << "'" << std::endl;
             return ;
         }
-
+        i++;
     }
     throw std::exception();
 }
