@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:55:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/02 18:28:58 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:44:35 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <vector>
+#include <list>
 
-template <class T>
+template <typename T>
 void easyfind(T& haystack, int needle) {
     
-    int i = 0;
+
     while (haystack[i])
     {
-        if (haystack[i] - '0' == needle)
+        if (haystack[i] == needle)
         {
-            std::cout << "needle found at occurence '" << i << "'" << std::endl;
+            std::cout << "needle '" << needle << "' found at occurence '" << i << "'" << std::endl;
             return ;
         }
-        i++;
+
     }
     throw std::exception();
 }

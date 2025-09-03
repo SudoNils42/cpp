@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:15:43 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/08/23 16:20:47 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/08/28 18:16:18 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int main() {
     Array<int> IntTabEmpty;
-    Array<int> IntTab(3);
-    IntTab[0] = 1;
-    IntTab[1] = 2;
-    IntTab[2] = 3;
+    const Array<int> IntTab(3);
+    // IntTab[0] = 1;
+    // IntTab[1] = 2;
+    // IntTab[2] = 3;
     std::cout << "size of IntTabEmpty: " << IntTabEmpty.size() << std::endl;
     std::cout << "size of IntTab: " << IntTab.size() << std::endl;
     std::cout << "content of IntTab: " << IntTab[0] << IntTab[1] << IntTab[2] << std::endl;
@@ -47,5 +47,6 @@ int main() {
     {
         std::cout << "OK! (out of range)" << std::endl;
     }
+
     return 0;
 }
