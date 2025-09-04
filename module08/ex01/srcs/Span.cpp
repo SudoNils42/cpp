@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 15:50:00 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/04 17:10:39 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:14:18 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Span::Span() : _N(0) {
 
 Span::Span(unsigned int N) : _N(N) {
     _cont.reserve(N);
-    std::cout << "[Span] Constructor with '" << N <<  "' max numbers called" << std::endl;
+    std::cout << "[Span] Constructor with max '" << N <<  "' numbers called" << std::endl;
 }
 
 Span::Span(const Span& src) : _N(src._N), _cont(src._cont) {
@@ -81,3 +81,12 @@ int Span::shortestSpan() {
     return min_span;
 }
 
+template <typename T>
+void Span::addNumbers(T first, T last) {
+    // unsigned int d = std::distance(first, last);
+    _cont.insert(_cont.end(), first, last);
+}
+
+template void Span::addNumbers<std::vector<int>::iterator>(std::vector<int>::iterator, std::vector<int>::iterator);
+template void Span::addNumbers<std::vector<int>::const_iterator>(std::vector<int>::const_iterator, std::vector<int>::const_iterator);
+template void Span::addNumbers<int*>(int*, int*);
