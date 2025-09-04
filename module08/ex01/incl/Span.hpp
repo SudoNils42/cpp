@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 15:03:52 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/04 18:03:02 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:21:22 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Span {
     private:
         unsigned int _N;
         std::vector<int> _cont;
-
+        
     public:
         Span();
         Span(unsigned int N);
@@ -34,6 +34,5 @@ class Span {
         int shortestSpan();
         int longestSpan();
 
-        template <typename T>
-        void addNumbers(T first, T last);
+        void addNumbers(int *first, int *last);
 };

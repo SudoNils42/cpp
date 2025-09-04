@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 16:10:48 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/04 18:12:42 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:21:38 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ try {
         int arr[2];
         arr[0] = -100;
         arr[1] = -110;
-        sp.addNumbers<>(arr, arr + 2);
+        sp.addNumbers(arr, arr + 2);
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest span: " << sp.longestSpan()<< std::endl;
 

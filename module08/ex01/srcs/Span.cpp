@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 15:50:00 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/04 18:14:18 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:19:16 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,7 @@ int Span::shortestSpan() {
     return min_span;
 }
 
-template <typename T>
-void Span::addNumbers(T first, T last) {
-    // unsigned int d = std::distance(first, last);
+void Span::addNumbers(int *first, int *last) {
+        // unsigned int d = std::distance(first, last);
     _cont.insert(_cont.end(), first, last);
 }
-
-template void Span::addNumbers<std::vector<int>::iterator>(std::vector<int>::iterator, std::vector<int>::iterator);
-template void Span::addNumbers<std::vector<int>::const_iterator>(std::vector<int>::const_iterator, std::vector<int>::const_iterator);
-template void Span::addNumbers<int*>(int*, int*);
