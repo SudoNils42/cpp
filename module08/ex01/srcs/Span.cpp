@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 15:50:00 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/04 18:19:16 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:36:44 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ int Span::shortestSpan() {
 }
 
 void Span::addNumbers(int *first, int *last) {
-        // unsigned int d = std::distance(first, last);
+    size_t d = std::distance(first, last);
+    if (_cont.size() + d > _N) 
+    {
+        std::cout << "Not enough place" << std::endl;
+        throw std::exception();
+    }
     _cont.insert(_cont.end(), first, last);
 }

@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 16:10:48 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/04 18:21:38 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:37:13 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main() {
 try {
-        Span sp = Span(7);
+        Span sp = Span(10);
         sp.addNumber(6);
         sp.addNumber(3);
         sp.addNumber(17);
