@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 16:10:48 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/05 17:14:54 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/05 17:23:14 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ int main() {
         bigSp.addNumbers(big, big + 10000);
         std::cout << "Shortest span: " << bigSp.shortestSpan() << std::endl;
         std::cout << "Longest span: " << bigSp.longestSpan()<< std::endl;
+    } catch (std::exception &e) {}
+
+    try {
+        Span bigVec = Span(10000);
+        std::vector<int> vec(10000);
+        for (int i = 0; i < 10000; i++) {
+            vec[i] = i;
+        }
+        bigVec.addNumbers(vec.begin(), vec.end());
+        std::cout << "Shortest span: " << bigVec.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << bigVec.longestSpan()<< std::endl;
     } catch (std::exception &e) {}
     
     return 0;

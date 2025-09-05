@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 15:03:52 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/05 17:18:51 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/05 17:19:59 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ class Span {
         void addNumbers(T first, T last);
 };
 
-        template <typename T>
-        void Span::addNumbers(T first, T last) {
-            size_t d = std::distance(first, last);
-            if (_cont.size() + d > _N) 
-            {
-                std::cout << "Not enough place" << std::endl;
-                throw std::exception();
-            }
-            _cont.insert(_cont.end(), first, last);
-        }
+template <typename T>
+void Span::addNumbers(T first, T last) {
+    size_t d = std::distance(first, last);
+    if (_cont.size() + d > _N) 
+    {
+        std::cout << "Not enough place" << std::endl;
+        throw std::exception();
+    }
+    _cont.insert(_cont.end(), first, last);
+}
