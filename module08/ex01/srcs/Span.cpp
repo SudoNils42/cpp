@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 15:50:00 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/04 18:36:44 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:47:04 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void Span::addNumber(int n) {
     {
         std::cout << "Can't add number because it's full" << std::endl;
         throw std::exception();
-        return;
     }
     _cont.push_back(n);
 }
@@ -72,7 +71,7 @@ int Span::shortestSpan() {
     std::vector<int> sorted = _cont;
     std::sort(sorted.begin(), sorted.end());
     int min_span = sorted[1] - sorted[0];
-    for (unsigned int i = 1; i < sorted.size() - 1; i++) {
+    for (unsigned int i = 1; i < sorted.size() -1; i++) {
         int span = sorted[i + 1] - sorted[i];
         if (span < min_span)
             min_span = span;
