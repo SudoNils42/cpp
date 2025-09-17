@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+         #
+#    By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/20 16:18:17 by nbonnet           #+#    #+#              #
-#    Updated: 2025/08/20 16:36:35 by nbonnet          ###   ########.fr        #
+#    Updated: 2025/09/17 16:31:17 by nbonnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = start
+NAME = span
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-SRCS = $(wildcard srcs/*.cpp)
+SRCS = srcs/main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
