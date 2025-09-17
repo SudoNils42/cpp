@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nbonnet <nbonnet@student.42.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:55:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/03 18:22:58 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/04 15:30:09 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <algorithm>
 #include <iostream>
 #include <stdexcept>
 #include <string>
