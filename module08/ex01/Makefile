@@ -6,14 +6,15 @@
 #    By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/20 16:18:17 by nbonnet           #+#    #+#              #
-#    Updated: 2025/09/17 16:40:59 by nbonnet          ###   ########.fr        #
+#    Updated: 2025/09/17 17:22:04 by nbonnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = span
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-SRCS = srcs/main.cpp
+SRCS =	srcs/main.cpp \
+		srcs/Span.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
