@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:55:40 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/09/30 14:58:59 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/09/30 17:54:22 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,13 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include <algorithm>
 
 template <typename T>
 void easyfind(T& haystack, int needle) {
-
-    typename T::iterator i;
-    i = haystack.begin();
-    int index = 0;
-    while (i != haystack.end())
-    {
-        if (*i == needle)
-        {
-            std::cout << "needle '" << needle << "' found at occurence '" << index << "'" << std::endl;
-            return ;
-        }
-        i++;
-        index++;
-    }
-    throw std::exception();
+    typename T::iterator it = std::find(haystack.begin(), haystack.end(), needle);
+    if (it == haystack.end())
+        throw std::exception();
+    int index = std::distance(haystack.begin(), it);
+    std::cout << "needle '" << needle << "' found at occurence '" << index << "'" << std::endl;
 }
