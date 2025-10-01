@@ -6,11 +6,11 @@
 #    By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/20 16:18:17 by nbonnet           #+#    #+#              #
-#    Updated: 2025/09/03 18:31:13 by nbonnet          ###   ########.fr        #
+#    Updated: 2025/10/01 19:32:58 by nbonnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = btc
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 SRCS = srcs/main.cpp
