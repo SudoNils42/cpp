@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/02 18:06:33 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/02 18:14:43 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 bool is_valid_format(std::string line) {
     int i = 0;
-    while ( i < 4)
+    int year;
+    int month;
+    int day;
+    while (i < 4)
     {
         if (!isdigit(line[i]))
         {
@@ -23,13 +26,14 @@ bool is_valid_format(std::string line) {
         }
         i++;
     }
+    year = atoi((line.substr(0, 4)).c_str());
     if (line[i] != '-')
     {
         std::cout << "Error: bad input => " << line << std::endl;
         return false;
     }
     i++;
-    while ( i < 7)
+    while (i < 7)
     {
         if (!isdigit(line[i]))
         {
@@ -38,13 +42,14 @@ bool is_valid_format(std::string line) {
         }
         i++;
     }
+    month = atoi((line.substr(5, 7)).c_str());
     if (line[i] != '-')
     {
         std::cout << "Error: bad input => " << line << std::endl;
         return false;
     }
     i++;
-    while ( i < 10)
+    while (i < 10)
     {
         if (!isdigit(line[i]))
         {
@@ -53,6 +58,7 @@ bool is_valid_format(std::string line) {
         }
         i++;
     }
+    day = atoi((line.substr(8, 10)).c_str());
     if (line[i] != ' ' || line[i + 1] != '|' || line[i + 2] != ' ')
     {
         std::cout << "Error: bad input => " << line << std::endl;
@@ -71,7 +77,7 @@ bool is_valid_format(std::string line) {
         std::cout << "Error: too large number." << std::endl;
         return false;
     }
-    std::cout << value << std::endl;
+    std::cout << year << "-" << month << "-" << day << " => " << value << " = " << std::endl;
     return true;
 }
 
