@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/02 17:56:37 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/02 18:06:33 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool is_valid_format(std::string line) {
         }
         i++;
     }
-    if (line[i] != ' ' && line[i + 1] != '|' && line[i + 2] != ' ')
+    if (line[i] != ' ' || line[i + 1] != '|' || line[i + 2] != ' ')
     {
         std::cout << "Error: bad input => " << line << std::endl;
         return false;
@@ -91,9 +91,6 @@ int main (int ac, char **av) {
     }
     std::string line;
     while (getline(file, line))
-    {
         is_valid_format(line); 
-    }
-
     return 0;
 }
