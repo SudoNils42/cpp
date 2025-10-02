@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/02 18:19:33 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/02 18:37:29 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ bool is_valid_format(std::string line) {
     i += 2;
     double value;
     value = std::atof((line.substr(i ,line.size() - i).c_str()));
+    i++;
     if (value < 0)
     {
         std::cout << "Error: not a positive number." << std::endl;
@@ -81,6 +82,18 @@ bool is_valid_format(std::string line) {
     {
         std::cout << "Error: value too high." << std::endl;
         return false;
+    }
+    int flag = 0;
+    while (line[i] != '\0')
+    {   
+        if (!isdigit(line[i]) && (line[i] != '.' || flag == 1))
+        {
+            std::cout << "Error: bad value." << std::endl;
+            return false;
+        }
+        if (line[i] == '.')
+            flag = 1;
+        i++;
     }
     std::cout << year << "-" << month << "-" << day << " => " << value << " = " << std::endl;
     return true;
