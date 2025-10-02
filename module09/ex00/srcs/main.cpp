@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/02 18:14:43 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/02 18:19:33 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ bool is_valid_format(std::string line) {
     if (value > 2147483647)
     {
         std::cout << "Error: too large number." << std::endl;
+        return false;
+    }
+    else if (value > 1000)
+    {
+        std::cout << "Error: value too high." << std::endl;
         return false;
     }
     std::cout << year << "-" << month << "-" << day << " => " << value << " = " << std::endl;
