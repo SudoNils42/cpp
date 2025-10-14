@@ -1,39 +1,22 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 15:09:32 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/02 17:48:23 by nbonnet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#pragma once
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstdlib>
-#include <limits>/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/02 18:37:29 by nbonnet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    file.txt                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#              #
+#    Updated: 2025/10/14 17:04:56 by nbonnet          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #include "../incl/BitcoinExchange.hpp"
 
 bool is_valid_format(std::string line) {
     int i = 0;
-    int year;
-    int month;
-    int day;
+    int year = 0;
+    int month = 0;
+    int day = 0;
     while (i < 4)
     {
         if (!isdigit(line[i]))
@@ -59,7 +42,7 @@ bool is_valid_format(std::string line) {
         }
         i++;
     }
-    month = atoi((line.substr(5, 7)).c_str());
+    month = atoi((line.substr(5, 2)).c_str());
     if (line[i] != '-')
     {
         std::cout << "Error: bad input => " << line << std::endl;
@@ -75,7 +58,7 @@ bool is_valid_format(std::string line) {
         }
         i++;
     }
-    day = atoi((line.substr(8, 10)).c_str());
+    day = atoi((line.substr(8, 2)).c_str());
     if (line[i] != ' ' || line[i + 1] != '|' || line[i + 2] != ' ')
     {
         std::cout << "Error: bad input => " << line << std::endl;
@@ -112,6 +95,49 @@ bool is_valid_format(std::string line) {
             flag = 1;
         i++;
     }
+    if (year < 2009 || year > 2025)
+    {
+        std::cout << "Error: bad date." << std::endl;
+        return false;
+    }
+    if (month < 1 || month > 12)
+    {
+        std::cout << "Error: bad date." << std::endl;
+        return false;
+    }
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+    {
+        if (day < 1 || day > 31)
+        {
+            std::cout << "Error: bad date." << std::endl;
+            return false;
+        }
+    }
+    if (month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        if (day < 1 || day > 30)
+        {
+            std::cout << "Error: bad date." << std::endl;
+            return false;
+        }
+    }
+    if (month == 2)
+    {
+        if (year % 4 == 0)
+        {
+            if (day < 1 || day > 29)
+            {
+                std::cout << "Error: bad date." << std::endl;
+                return false;
+            }
+
+        }
+        else if (day < 1 || day > 28)
+        {
+            std::cout << "Error: bad date." << std::endl;
+            return false;
+        }
+    } 
     std::cout << year << "-" << month << "-" << day << " => " << value << " = " << std::endl;
     return true;
 }
@@ -127,19 +153,11 @@ int main (int ac, char **av) {
     file.open (av[1]);
     if (!file.is_open())
     {
-        std::cout << "Error: can't open file '" << av[1] << "'" << std::endl;
+        std::cerr << "Error: can't open file '" << av[1] << "'" << std::endl;
         return 1;
     }
     std::string line;
     while (getline(file, line))
         is_valid_format(line); 
     return 0;
-}2011-01-03 | 3..2
-2011-01-03 | 2
-2011-01-03 | 1dad
-2011-01-03 | 1.2
-2011-01-09 | 1
-2012-01-11 | -1
-2001-42-42
-2012-01-11 | 1
-2012-01-11 | 2147483648
+}

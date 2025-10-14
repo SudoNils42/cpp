@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:32 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/02 17:48:23 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/14 18:08:15 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,3 +16,5 @@
 #include <string>
 #include <cstdlib>
 #include <limits>
+#include <map>
+#include <cstring>
