@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/14 18:51:08 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/14 18:54:31 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,11 +176,8 @@ bool data_to_map(std::map<std::string, double>  &data) {
 
 void result(const std::string& date, double value, const std::map<std::string, double>& data) {
     std::map<std::string, double>::const_iterator data_it = data.lower_bound(date);
-    if (data_it == data.begin() && (data_it == data.end() || data_it->first != date)) {
-        std::cerr << "Error: no prior rate for " << date << std::endl;
-        return;
-    }
-    if (data_it != data.end() && data_it->first != date) --data_it;
+    if (data_it != data.end() && data_it->first != date)
+    data_it--;
     double final_result = value * data_it->second;
     std::cout << date << " => " << value << " = " << final_result << std::endl;
 }
@@ -206,11 +203,10 @@ int main (int ac, char **av) {
     {
         if (is_valid_format(line, input))
         {
-            std::map<std::string, double>::iterator it = input.end();
-            it--;
-            result(it->first, it->second, data);
+            std::map<std::string, double>::iterator input_it = input.end();
+            input_it--;
+            result(input_it->first, input_it->second, data);
         }
     }
-
     return 0;
 }
