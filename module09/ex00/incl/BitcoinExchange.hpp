@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:32 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/14 18:08:15 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/15 16:38:24 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,19 @@
 #include <limits>
 #include <map>
 #include <cstring>
+
+class BitcoinExchange {
+    private:
+        std::map<std::string, double> _input;
+        std::map<std::string, double> _data;
+        
+    public:
+        BitcoinExchange();
+        BitcoinExchange(const BitcoinExchange &src);
+        BitcoinExchange& operator=(const BitcoinExchange &rhs);
+        ~BitcoinExchange();
+        
+        bool init_data();
+        bool parse_line(std::string line);
+        void find_rate();
+};
