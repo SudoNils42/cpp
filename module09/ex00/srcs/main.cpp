@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/14 18:54:31 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/15 15:48:59 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,12 +174,18 @@ bool data_to_map(std::map<std::string, double>  &data) {
     return true;
 }
 
-void result(const std::string& date, double value, const std::map<std::string, double>& data) {
-    std::map<std::string, double>::const_iterator data_it = data.lower_bound(date);
-    if (data_it != data.end() && data_it->first != date)
-    data_it--;
-    double final_result = value * data_it->second;
-    std::cout << date << " => " << value << " = " << final_result << std::endl;
+void result(std::map<std::string, double> &input ,std::map<std::string, double> &data) {
+    std::map<std::string, double>::iterator input_it = input.end();
+    input_it--;
+    std::map<std::string, double>::const_iterator data_it = data.lower_bound(input_it->first);
+    if (data_it == data.begin())
+    {
+        std::cerr << "Error: no rate" << std::endl;
+        return ;
+    }
+    if (data_it == data.end() || data_it->first != input_it->first)
+        data_it--;
+    std::cout << input_it->first << " => " << input_it->second << " = " << input_it->second * data_it->second << std::endl;
 }
 
 int main (int ac, char **av) {
@@ -202,11 +208,7 @@ int main (int ac, char **av) {
     while (getline(file, line))
     {
         if (is_valid_format(line, input))
-        {
-            std::map<std::string, double>::iterator input_it = input.end();
-            input_it--;
-            result(input_it->first, input_it->second, data);
-        }
+            result(input, data);
     }
     return 0;
 }
