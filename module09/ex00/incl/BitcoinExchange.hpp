@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:32 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/15 16:38:24 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/22 15:19:55 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <limits>
 #include <map>
 #include <cstring>
+
+extern int i;
 
 class BitcoinExchange {
     private:

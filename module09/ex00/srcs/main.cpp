@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:09:28 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/15 16:54:10 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/22 15:33:36 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int main (int ac, char **av) {
     BitcoinExchange btc;
     btc.init_data();
     std::string line;
+    getline(file, line);
     while (getline(file, line))
     {
+        i = 0;
         if (btc.parse_line(line))
             btc.find_rate();
     }

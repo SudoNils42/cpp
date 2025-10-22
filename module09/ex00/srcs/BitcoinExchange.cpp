@@ -6,11 +6,13 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:53:30 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/15 16:49:02 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/22 15:19:58 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/BitcoinExchange.hpp"
+
+int i = 0;
 
 BitcoinExchange::BitcoinExchange() {}
 
@@ -31,7 +33,7 @@ bool BitcoinExchange::init_data() {
     std::ifstream file("data.csv");
     if (!file.is_open())
     {
-        std::cerr << "Error: can't open data.csv" << std::endl;
+        std::cerr << "Error: can't open the csv file" << std::endl;
         return false;
     }
     std::string line;
@@ -46,20 +48,20 @@ bool BitcoinExchange::init_data() {
 }
 
 
-int get_year(std::string line, int *i) {
+int get_year(std::string line) {
     int year;
     
-    while (*i < 4)
+    while (i < 4)
     {
-        if (!isdigit(line[*i]))
+        if (!isdigit(line[i]))
         {
             std::cerr << "Error: bad input => " << line << std::endl;
             return -1;
         }
-        *i++;
+        i++;
     }
     year = atoi((line.substr(0, 4)).c_str());
-    if (line[*i] != '-')
+    if (line[i] != '-')
     {
         std::cerr << "Error: bad input => " << line << std::endl;
         return -1;
@@ -68,55 +70,55 @@ int get_year(std::string line, int *i) {
     return year;
 }
 
-int get_month(std::string line, int *i) {
+int get_month(std::string line) {
     int month;
     
-    while (*i < 7)
+    while (i < 7)
     {
-        if (!isdigit(line[*i]))
+        if (!isdigit(line[i]))
         {
             std::cerr << "Error: bad input => " << line << std::endl;
             return -1;
         }
-        *i++;
+        i++;
     }
     month = atoi((line.substr(5, 2)).c_str());
-    if (line[*i] != '-')
+    if (line[i] != '-')
     {
         std::cerr << "Error: bad input => " << line << std::endl;
         return -1;
     }
-    *i++;
+    i++;
     return month;
 }
 
-int get_day(std::string line, int *i) {
+int get_day(std::string line) {
     int day;
     
-    while (*i < 10)
+    while (i < 10)
     {
-        if (!isdigit(line[*i]))
+        if (!isdigit(line[i]))
         {
             std::cerr << "Error: bad input => " << line << std::endl;
             return -1;
         }
-        *i++;
+        i++;
     }
     day = atoi((line.substr(8, 2)).c_str());
-    if (line[*i] != ' ' || line[*i + 1] != '|' || line[*i + 2] != ' ')
+    if (line[i] != ' ' || line[i + 1] != '|' || line[i + 2] != ' ')
     {
         std::cerr << "Error: bad input => " << line << std::endl;
         return -1;
     }
-    *i += 2;
+    i += 2;
     return day;
 }
 
-double get_value(std::string line, int *i) {
+double get_value(std::string line) {
     double value;
     
-    value = std::atof((line.substr(*i ,line.size() - *i).c_str()));
-    *i++;
+    value = std::atof((line.substr(i ,line.size() - i).c_str()));
+    i++;
     if (value < 0)
     {
         std::cerr << "Error: not a positive number." << std::endl;
@@ -133,16 +135,16 @@ double get_value(std::string line, int *i) {
         return -1;
     }
     int flag = 0;
-    while (line[*i] != '\0')
+    while (line[i] != '\0')
     {   
-        if (!isdigit(line[*i]) && (line[*i] != '.' || flag == 1))
+        if (!isdigit(line[i]) && (line[i] != '.' || flag == 1))
         {
             std::cerr << "Error: bad value." << std::endl;
             return -1;
         }
-        if (line[*i] == '.')
+        if (line[i] == '.')
             flag = 1;
-        *i++;
+        i++;
     }
     return value;
 }
@@ -214,18 +216,16 @@ std::string date_to_str(int year, int month, int day) {
 }
 
 bool BitcoinExchange::parse_line(std::string line) {
-    int i = 0;
-    
-    int year = get_year(line, &i);
+    int year = get_year(line);
     if (year == -1)
         return false;
-    int month = get_month(line, &i);
+    int month = get_month(line);
     if (month == -1)
         return false;
-    int day = get_day(line, &i);
+    int day = get_day(line);
     if (day == -1)
         return false;
-    double value = get_value(line, &i);
+    double value = get_value(line);
     if (value == -1)
         return false;
     if (!check_date(year, month, day))
