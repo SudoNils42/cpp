@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:00:13 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/23 14:08:26 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/23 14:23:40 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void RPN::parse_input(std::string input) {
     while (_input[i])
     {
         if (std::isdigit(_input[i]) && (_input[i + 1] == ' ' || _input[i + 1] == '\0'))
-            operands++;
+        operands++;
         else if ((_input[i] == '+' || _input[i] == '-' || _input[i] == '/' || _input[i] == '*') && (_input[i + 1] == ' ' || _input[i + 1] == '\0'))
             operators++;
         else if (!std::isspace(_input[i]))
