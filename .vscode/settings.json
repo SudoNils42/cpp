@@ -52,6 +52,7 @@
         "typeinfo": "cpp",
         "cstring": "cpp",
         "cinttypes": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "map": "cpp"
     }
 }
