@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:34 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/24 16:31:09 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/24 18:20:52 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ void PmergeMe::init_cont(int ac, char **av) {
     }
 }
 
+std::deque<int>& PmergeMe::get_deque() {
+    return _deque;
+}
+
+std::vector<int>& PmergeMe::get_vector() {
+    return _vector;
+}
+
+
 void PmergeMe::display_before(int ac, char **av) {
     std::cout << "Before:";
     int max = 6;
@@ -54,16 +63,16 @@ void PmergeMe::display_before(int ac, char **av) {
     std::cout << std::endl;
 }
 
-void PmergeMe::display_after() {
-    std::cout << "After:";
+void PmergeMe::display_after(std::deque<int> deque) {
+    std::cout << "After: ";
     int max = 6;
     
-    if (_deque.size() > 5)
+    if (deque.size() > 5)
         max = 5;
     int i = 1;
-    while (i != max && i != static_cast<int>(_deque.size()) + 1)
+    while (i != max && i != static_cast<int>(deque.size()) + 1)
     {
-        std::cout << " " << _deque.front();
+        std::cout << " " << deque[i - 1];
         i++;
     }
     if (max == 5)
