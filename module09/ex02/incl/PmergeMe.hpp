@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:04 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/24 18:21:13 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/24 18:32:15 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 
 class PmergeMe {
     private:
