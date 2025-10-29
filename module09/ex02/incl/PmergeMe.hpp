@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:04 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/29 18:14:05 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/29 19:22:48 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,7 @@ class PmergeMe {
 
 };
 
-template <typename T>
-int jacobsthal(int k)
-{
-    if (k <= 0)
-        return 0;
-    if (k == 1)
-        return 1;
-    int a = 1;
-    int b = 1;
-    for (int i = 2; i < k; i++)
-    {
-        int c = 2 * b + a;
-        a = b;
-        b = c;
-    }
-    return b;
-}
+int jacobsthal(int n);
 
 template <typename Container>
 void ford_johnson(Container &container) {
@@ -83,24 +67,28 @@ void ford_johnson(Container &container) {
     }
     ford_johnson(main);
 
-    int size = pend.size();
-    int k = 1;
-    while (size > 0)
+    int n = 1;
+    while (!pend.empty())
     {
-        int j = jacobsthal<int>(k);
-        if (j >= size)
+        int j = jacobsthal(n);
+        if (j >= static_cast<int>(pend.size()))
             break;
         typename Container::iterator it = pend.begin();
-        for (int i = 0; i < j; ++i)
-            ++it;
+        for (int i = 0; i < j; i++)
+            it++;
         int val = *it;
         pend.erase(it);
         main.insert((std::lower_bound(main.begin(), main.end(), val)), val);
-        --size;
-        ++k;
+        n++;
     }
     if (odd != -1)
-        main.insert((std::lower_bound(main.begin(), main.end(), odd)), odd);
-    
+        pend.push_back(odd);
+
+    while (!pend.empty())
+    {
+        int val = pend.back();
+        pend.pop_back();
+        main.insert((std::lower_bound(main.begin(), main.end(), val)), val);
+    }
     container = main;
 }
