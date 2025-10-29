@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:16 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/24 18:41:28 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/29 17:21:41 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int main (int ac, char **av) {
     
     std::deque<int> deque = algo.get_deque();
     clock_t start = clock();
-    merge_sort(deque);
+    ford_johnson(deque);
     clock_t end = clock();
     double deque_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 
     std::vector<int> vector = algo.get_vector();
     start = clock();
-    merge_sort(vector);
+    ford_johnson(vector);
     end = clock();
     double vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 

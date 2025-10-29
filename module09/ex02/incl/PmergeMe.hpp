@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:04 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/24 18:32:15 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/29 18:14:05 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 
 class PmergeMe {
     private:
@@ -37,47 +38,69 @@ class PmergeMe {
 
 };
 
+template <typename T>
+int jacobsthal(int k)
+{
+    if (k <= 0)
+        return 0;
+    if (k == 1)
+        return 1;
+    int a = 1;
+    int b = 1;
+    for (int i = 2; i < k; i++)
+    {
+        int c = 2 * b + a;
+        a = b;
+        b = c;
+    }
+    return b;
+}
 
 template <typename Container>
-void merge_sort(Container &container) {
-    
+void ford_johnson(Container &container) {
     if (container.size() <= 1)
         return;
-    else if (container.size() == 2) {
-        if (container[0] > container[1])
-            std::swap(container[0], container[1]);
-        return;
-    }
-    size_t mid = container.size() / 2;
-    Container left(container.begin(), container.begin() + mid);
-    Container right(container.begin() + mid, container.end());
+
+    Container main;
+    Container pend;
     
-    merge_sort(left);
-    merge_sort(right);
-
-    container.clear();
-    typename Container::iterator left_it = left.begin();
-    typename Container::iterator right_it = right.begin();
-    typename Container::iterator left_end = left.end();
-    typename Container::iterator right_end = right.end();
-
-    while (left_it != left_end && right_it != right_end) {
-        if (*left_it <= *right_it) {
-            container.push_back(*left_it);
-            ++left_it;
-        } else {
-            container.push_back(*right_it);
-            ++right_it;
-        }
+    int odd = -1;
+    if (container.size() % 2 == 1)
+    {
+        odd = container.back();
+        container.pop_back();
     }
+    
+    typename Container::iterator it = container.begin();
+    while (it != container.end())
+    {
+        int a = *it;
+        it++;
+        int b = *it;
+        main.push_back(std::min(a, b));
+        pend.push_back(std::max(a, b));
+        it++;
+    }
+    ford_johnson(main);
 
-    // Ajouter les éléments restants
-    while (left_it != left_end) {
-        container.push_back(*left_it);
-        ++left_it;
+    int size = pend.size();
+    int k = 1;
+    while (size > 0)
+    {
+        int j = jacobsthal<int>(k);
+        if (j >= size)
+            break;
+        typename Container::iterator it = pend.begin();
+        for (int i = 0; i < j; ++i)
+            ++it;
+        int val = *it;
+        pend.erase(it);
+        main.insert((std::lower_bound(main.begin(), main.end(), val)), val);
+        --size;
+        ++k;
     }
-    while (right_it != right_end) {
-        container.push_back(*right_it);
-        ++right_it;
-    }
+    if (odd != -1)
+        main.insert((std::lower_bound(main.begin(), main.end(), odd)), odd);
+    
+    container = main;
 }
