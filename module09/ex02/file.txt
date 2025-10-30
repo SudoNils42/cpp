@@ -1,17 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 15:30:16 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/24 18:02:25 by nbonnet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../incl/PmergeMe.hpp"
 
+int jacobsthal(int n)
+{
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
+}
 
 int main (int ac, char **av) {
     if (ac < 2)
@@ -25,26 +23,22 @@ int main (int ac, char **av) {
     algo.display_before(ac, av);
     
     std::deque<int> deque = algo.get_deque();
-    merge_sort(deque);
+    clock_t start = clock();
+    ford_johnson(deque);
+    clock_t end = clock();
+    double deque_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 
     std::vector<int> vector = algo.get_vector();
-    merge_sort(vector);
+    start = clock();
+    ford_johnson(vector);
+    end = clock();
+    double vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 
-    
-    
-    algo.display_after();
+    algo.display_after(deque);
+    std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " << deque_time << " us" << std::endl;
+    std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << vector_time << " us" << std::endl;
     return 0;
-}/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 15:30:34 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/24 18:04:41 by nbonnet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+}
 
 #include "../incl/PmergeMe.hpp"
 
@@ -99,32 +93,22 @@ void PmergeMe::display_before(int ac, char **av) {
     std::cout << std::endl;
 }
 
-void PmergeMe::display_after() {
+void PmergeMe::display_after(std::deque<int> deque) {
     std::cout << "After: ";
     int max = 6;
     
-    if (_deque.size() > 5)
+    if (deque.size() > 5)
         max = 5;
     int i = 1;
-    while (i != max && i != static_cast<int>(_deque.size()) + 1)
+    while (i != max && i != static_cast<int>(deque.size()) + 1)
     {
-        std::cout << " " << _deque[i - 1];
+        std::cout << " " << deque[i - 1];
         i++;
     }
     if (max == 5)
         std::cout << " [...]";
     std::cout << std::endl;
-}/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 15:30:04 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/24 18:09:51 by nbonnet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+}
 
 #pragma once
 #include <deque>
@@ -132,6 +116,8 @@ void PmergeMe::display_after() {
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
+#include <algorithm>
 
 class PmergeMe {
     private:
@@ -146,53 +132,63 @@ class PmergeMe {
 
         void init_cont(int ac, char **av);
         void display_before(int ac, char **av);
-        void display_after();
+        void display_after(std::deque<int> deque);
         std::deque<int>& get_deque();
         std::vector<int>& get_vector();
 
 };
 
+int jacobsthal(int n);
 
 template <typename Container>
-void merge_sort(Container &container) {
-    
+void ford_johnson(Container &container) {
     if (container.size() <= 1)
         return;
-    else if (container.size() == 2) {
-        if (container[0] > container[1])
-            std::swap(container[0], container[1]);
-        return;
-    }
-    size_t mid = container.size() / 2;
-    Container left(container.begin(), container.begin() + mid);
-    Container right(container.begin() + mid, container.end());
+
+    Container main;
+    Container pend;
     
-    merge_sort(left);
-    merge_sort(right);
-
-    container.clear();
-    typename Container::iterator left_it = left.begin();
-    typename Container::iterator right_it = right.begin();
-    typename Container::iterator left_end = left.end();
-    typename Container::iterator right_end = right.end();
-
-    while (left_it != left_end && right_it != right_end) {
-        if (*left_it <= *right_it) {
-            container.push_back(*left_it);
-            ++left_it;
-        } else {
-            container.push_back(*right_it);
-            ++right_it;
-        }
+    int odd = -1;
+    if (container.size() % 2 == 1)
+    {
+        odd = container.back();
+        container.pop_back();
     }
+    
+    typename Container::iterator it = container.begin();
+    while (it != container.end())
+    {
+        int a = *it;
+        it++;
+        int b = *it;
+        main.push_back(std::min(a, b));
+        pend.push_back(std::max(a, b));
+        it++;
+    }
+    ford_johnson(main);
 
-    // Ajouter les éléments restants
-    while (left_it != left_end) {
-        container.push_back(*left_it);
-        ++left_it;
+    int n = 1;
+    while (!pend.empty())
+    {
+        int j = jacobsthal(n);
+        if (j >= static_cast<int>(pend.size()))
+            break;
+        typename Container::iterator it = pend.begin();
+        for (int i = 0; i < j; i++)
+            it++;
+        int val = *it;
+        pend.erase(it);
+        main.insert((std::lower_bound(main.begin(), main.end(), val)), val);
+        n++;
     }
-    while (right_it != right_end) {
-        container.push_back(*right_it);
-        ++right_it;
+    if (odd != -1)
+        pend.push_back(odd);
+
+    while (!pend.empty())
+    {
+        int val = pend.back();
+        pend.pop_back();
+        main.insert((std::lower_bound(main.begin(), main.end(), val)), val);
     }
+    container = main;
 }
