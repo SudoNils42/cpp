@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:04 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/30 14:16:22 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/30 17:39:41 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 #include <algorithm>
 
 class PmergeMe {
@@ -30,7 +31,7 @@ class PmergeMe {
         PmergeMe& operator=(const PmergeMe &rhs);
         ~PmergeMe();
 
-        void init_cont(int ac, char **av);
+        int init_cont(int ac, char **av);
         void display_before(int ac, char **av);
         void display_after(std::deque<int> deque);
         std::deque<int>& get_deque();

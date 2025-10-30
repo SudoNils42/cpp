@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:16 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/29 18:31:04 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/30 17:46:22 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int jacobsthal(int n)
         return 0;
     if (n == 1)
         return 1;
+    if (n == 2)
+        return 3;
     return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
 }
 
@@ -29,7 +31,11 @@ int main (int ac, char **av) {
     }
     
     PmergeMe algo;
-    algo.init_cont(ac, av);
+    if (algo.init_cont(ac, av) == 1)
+    {
+        std::cerr << "Error: only positive numbers and under int max" << std::endl;
+        return 1;
+    }
     algo.display_before(ac, av);
     
     std::deque<int> deque = algo.get_deque();

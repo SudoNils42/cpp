@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:34 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/29 19:25:35 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/10/30 17:47:31 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,19 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& rhs) {
 
 PmergeMe::~PmergeMe() {}
 
-void PmergeMe::init_cont(int ac, char **av) {
+int PmergeMe::init_cont(int ac, char **av) {
     int i = 1;
     while (i < ac)
     {
-     _deque.push_back(std::atoi(av[i]));
-     _vector.push_back(std::atoi(av[i]));
-     i++;
+        double tmp = std::atoi(av[i]);
+        if (tmp < 0 || (tmp == 0 && av[i][0] != '0') || tmp > std::numeric_limits<int>::max())
+            return 1;
+        
+        _deque.push_back(std::atoi(av[i]));
+        _vector.push_back(std::atoi(av[i]));
+        i++;
     }
+    return 0;
 }
 
 std::deque<int>& PmergeMe::get_deque() {
