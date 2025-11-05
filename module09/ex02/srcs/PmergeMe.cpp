@@ -6,7 +6,7 @@
 /*   By: nbonnet <nbonnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 15:30:34 by nbonnet           #+#    #+#             */
-/*   Updated: 2025/10/30 17:47:31 by nbonnet          ###   ########.fr       */
+/*   Updated: 2025/11/05 18:56:17 by nbonnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void PmergeMe::display_after(std::deque<int> deque) {
     if (deque.size() > 5)
         max = 5;
     int i = 1;
-    while (i != max && i != static_cast<int>(deque.size()) + 1)
+    while (/* i != max &&  */i != static_cast<int>(deque.size()) + 1)
     {
         std::cout << " " << deque[i - 1];
         i++;
